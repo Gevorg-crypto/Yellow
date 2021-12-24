@@ -1,4 +1,5 @@
 import React from 'react';
+import FormModal from '../FormModal';
 interface IItem {
     "id": number,
     "user_id": string,
@@ -8,6 +9,9 @@ interface IItem {
 }
 
 function Items({items}: { items:IItem[]}) {
+    const handlerEdit = (item:IItem)=>{
+        return (<FormModal item={item}/>);
+    }
     return (
         <div className="w-full md:w-64">
             {items.map((item:IItem,index:number) => {
@@ -17,7 +21,7 @@ function Items({items}: { items:IItem[]}) {
                     .format(item.date*1000);
                 return (
                     <div className="flex w-full justify-around py-5 border-b" key={index}>
-                        <div>
+                        <div onClick={()=>handlerEdit(item)}>
                             <img src="/images/icon.png" alt=""/>
                         </div>
                         <div className="basis-44">
@@ -34,6 +38,7 @@ function Items({items}: { items:IItem[]}) {
                                 <span className="text-black">Time: </span>{item.time} min
                             </p>
                         </div>
+
                     </div>
                 )
             })}

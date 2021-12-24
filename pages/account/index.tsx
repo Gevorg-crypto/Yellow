@@ -16,7 +16,7 @@ function index() {
     return (
         <div className='h-100 w-full flex flex-col items-center justify-center'>
             {modalIsTrue ?
-                <FormModal setModalIsTrue={setModalIsTrue} setJogs={setJogs}/>
+                <FormModal setModalIsTrue={setModalIsTrue}/>
                 : jogs.length > 0 ? (<><Items items={jogs}/>
                     <div className="fixed bottom-6 right-6" onClick={() => setModalIsTrue(true)}>
                         <img src="/images/add.png" alt=""/>
